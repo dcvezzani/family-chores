@@ -16,7 +16,12 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(cors());
 
-app.use('/api', indexRouter);
+const pathForEnvironment = (path) => {
+  return (process.env.NODE_ENV === 'local') ? `/api${path}` : path
+}
+
+console.log(">>>pathForEnvironment('/')", process.env.NODE_ENV, pathForEnvironment('/'))
+app.use(pathForEnvironment('/'), indexRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

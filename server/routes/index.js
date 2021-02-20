@@ -3,8 +3,15 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  console.log(">>>trace")
   res.json({ title: 'Express' });
+});
+
+router.get('/login', function(req, res, next) {
+  res.json({ title: 'login' });
+});
+
+router.get('/logout', function(req, res, next) {
+  res.json({ title: 'logout' });
 });
 
 module.exports = router;
