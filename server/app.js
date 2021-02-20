@@ -16,7 +16,12 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(cors());
 
-app.use('/api', indexRouter);
+const pathForEnvironment = (path) => {
+  return (process.env.NODE_ENV === 'local') ? `/api/chores${path}` : path
+}
+
+console.log(">>>pathForEnvironment('/')", process.env.NODE_ENV, pathForEnvironment('/'))
+app.use(pathForEnvironment('/'), indexRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -26,6 +31,7 @@ app.use(function(req, res, next) {
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
+  console.log(">>>err", err)
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 

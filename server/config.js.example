@@ -1,0 +1,24 @@
+exports.config = {
+  "client_id": "999999999999999",
+  "redirect_uri": "https://app.example.com/token",
+  "scope": "email",
+  "oauth_base_url": "https://www.facebook.com/v9.0/dialog/oauth",
+  "graph_base_url": "https://graph.facebook.com/v9.0",
+  "client_secret": 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
+}
+
+exports.localConfig = {
+  "oauth_base_url": "https://app.example.com/token",
+  "user": {
+    "id": "999999999999999",
+    "name": "John Doe",
+    "email": "john.doe@gmail.com",
+  },
+  "token": {
+    "access_token": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    "token_type": "bearer",
+    "expires_in": 5183501, 
+  }
+}
+
+

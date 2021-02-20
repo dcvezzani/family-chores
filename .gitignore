@@ -1,3 +1,4 @@
 *.lock
 server/views
-
+cache.json
+config.js

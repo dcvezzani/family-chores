@@ -2,11 +2,23 @@
   <div id="app">
     <div id="nav">
       <router-link to="/">Home</router-link>
+      <span v-if="false"> | <router-link to="/token">Token</router-link> </span>
+      <span> | <router-link to="/secret">Secret</router-link> </span>
+      <span> | <router-link to="/profile">Profile</router-link> </span>
       <span> | <router-link to="/about">About</router-link> </span>
+      <Auth></Auth>
     </div>
     <router-view/>
   </div>
 </template>
+
+<script>
+export default {
+  name: 'App',
+  props: ['msg'],
+}
+</script>
+
 
 <style>
 #app {
