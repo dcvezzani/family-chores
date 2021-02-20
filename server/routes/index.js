@@ -14,4 +14,12 @@ router.get('/logout', function(req, res, next) {
   res.json({ title: 'logout' });
 });
 
+router.get('/deauthorize', function(req, res, next) {
+  res.json({ title: 'deauthorize' });
+});
+
+router.get('/purgeUserData', function(req, res, next) {
+  res.json({ title: 'purgeUserData' });
+});
+
 module.exports = router;

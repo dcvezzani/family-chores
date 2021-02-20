@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "dev": "NODE_ENV=local DEBUG=server:* nodemon npm start"
+    "dev": "NODE_ENV=local FILE_BASE_PATH=/Users/dcvezzani/personal-projects/family-chores DEBUG=server:* nodemon npm start",
+    "prod": "NODE_ENV=production PORT=3001 FILE_BASE_PATH=/var/www/vhosts/vezzaniphotography.com/chores.vezzaniphotography.com DEBUG=server:* npm start"
   },
   "dependencies": {
     "cookie-parser": "~1.4.3",

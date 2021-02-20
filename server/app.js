@@ -17,7 +17,7 @@ app.use(cookieParser());
 app.use(cors());
 
 const pathForEnvironment = (path) => {
-  return (process.env.NODE_ENV === 'local') ? `/api${path}` : path
+  return (process.env.NODE_ENV === 'local') ? `/api/chores${path}` : path
 }
 
 console.log(">>>pathForEnvironment('/')", process.env.NODE_ENV, pathForEnvironment('/'))
