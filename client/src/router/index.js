@@ -23,7 +23,7 @@ const routes = [
       const state = await fetch(url)
       .then(response => response.json())
       .then(user => {
-        console.log(">>>data", user)
+        console.log(">>>user", user)
       })
       .catch(err => console.error(`Unable to authorize`, err))
 
