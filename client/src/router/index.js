@@ -4,7 +4,6 @@ import Home from '../views/Home.vue'
 
 Vue.use(VueRouter)
 
-window.localDevelopment = false
 const routes = [
   {
     path: '/',
@@ -26,7 +25,7 @@ const routes = [
       .then(user => {
         console.log(">>>user", user)
 
-        if (window.localDevelopment === true && window.location.href.includes(`chores.vezzaniphotography.com`)) {
+        if (window.location.href.includes(`chores.vezzaniphotography.com`)) {
           const search = Object.keys(user).reduce((params, attr) => {
             const value = user[attr]
             params.push(`${attr}=${value}`)
