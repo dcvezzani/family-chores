@@ -2,6 +2,14 @@ var express = require('express');
 var request = require('request');
 var router = express.Router();
 
+const isNonProd = () => (['development', 'local', 'dev'].includes(process.env.NODE_ENV))
+
+const AUTHORIZE_URI = (isNonProd)
+  ? `https://chores-local.vezzaniphotography.com/token?client_id=107962317902323&redirect_uri=https://chores.vezzaniphotography.com/token&state=xxt&scope=email`
+  : `https://www.facebook.com/v9.0/dialog/oauth?client_id=107962317902323&redirect_uri=https://chores.vezzaniphotography.com/token&state=xxt&scope=email`
+
+  // var uri = `https://www.facebook.com/v9.0/dialog/oauth?client_id=107962317902323&redirect_uri=https://chores.vezzaniphotography.com/token&state=xxt&scope=email`
+
 const getUser = (token) => {
 // GET https://graph.facebook.com/v9.0/me?fields=id%2Cname%2Cemail&access_token=EAABiMOZBbkfMBACxT2wNSMzpzMVykCSQNIsk9X3ogqxobxTwsDyZBpM6sOItKbMr0Ggba6yBVk3l1DKZBcbZBgWofloYzuhwYjsZBDzGlHQs5hwqSguDEnaHOHA5rzzt7ZBh8NIa6QuCkX9ZAbH9AHlsL7fy5qlYskyaHTC6wkfOAZDZD
   
@@ -59,14 +67,24 @@ const getToken = (code) => {
 }
 
 router.get('/authorize', function (req, res) {
-  var uri = `https://www.facebook.com/v9.0/dialog/oauth?client_id=107962317902323&redirect_uri=https://chores.vezzaniphotography.com/token&state=xxt&scope=email`
+  const uri = AUTHORIZE_URI
+
   console.log(">>>uri", uri)
   res.redirect(uri)
 })
   
 router.get('/token', async function(req, res, next) {
-  // const user = {id: "10225108674728397", name: "David Curtis Vezzani", email: "dcvezzani@gmail.com"}
-  // return res.json(user)
+  if (isNonProd) {
+    const user = {id: "10225108674728397", name: "David Curtis Vezzani", email: "dcvezzani@gmail.com"}
+    // const search = Object.keys(user).reduce((params, attr) => {
+    //   const value = user[attr]
+    //   params.push(`${attr}=${value}`)
+    //   return params
+    // }, [])
+    // const uri = `https://chores-local.vezzaniphotography.com?${search.join("&")}`
+    // res.redirect(uri)
+    return res.json(user)
+  }
 
   const { code } = req.query
   if (!code) return res.status(400).json({ message: `Missing authorization grant code` })
