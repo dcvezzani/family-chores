@@ -12,8 +12,8 @@ const routes = [
   },
 
   {
-    path: '/login',
-    name: 'Login',
+    path: '/token',
+    name: 'Token',
     beforeEnter: async (to, from, next) => {
       const pathParts = to.fullPath.split('?')
       const search = (pathParts.length > 1) ? `?${pathParts[1]}` : ''
@@ -28,6 +28,14 @@ const routes = [
       })
       .catch(err => console.error(`Unable to authorize`, err))
 
+      next('/')
+    }
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    beforeEnter: async (to, from, next) => {
+      window.location = `https://chores.vezzaniphotography.com/api/chores/authorize`
       next('/')
     }
   },
