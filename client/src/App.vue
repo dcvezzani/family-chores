@@ -3,6 +3,7 @@
     <div id="nav">
       <router-link to="/">Home</router-link>
       <span> | <router-link to="/login">Login</router-link> </span>
+      <span> | <router-link to="/token">Token</router-link> </span>
       <span> | <router-link to="/about">About</router-link> </span>
     </div>
     <router-view/>
