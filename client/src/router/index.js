@@ -22,9 +22,8 @@ const routes = [
       let url = `https://chores.vezzaniphotography.com/api/chores/token${search}`
       const state = await fetch(url)
       .then(response => response.json())
-      .then(data => {
-        // this.data = data
-        console.log(">>>data", data)
+      .then(user => {
+        console.log(">>>data", user)
       })
       .catch(err => console.error(`Unable to authorize`, err))
 
