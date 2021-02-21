@@ -65,6 +65,9 @@ router.get('/authorize', function (req, res) {
 })
   
 router.get('/token', async function(req, res, next) {
+  // const user = {id: "10225108674728397", name: "David Curtis Vezzani", email: "dcvezzani@gmail.com"}
+  // return res.json(user)
+
   const { code } = req.query
   if (!code) return res.status(400).json({ message: `Missing authorization grant code` })
 
