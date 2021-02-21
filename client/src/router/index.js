@@ -35,7 +35,7 @@ const routes = [
     path: '/login',
     name: 'Login',
     beforeEnter: async (to, from, next) => {
-      window.location = `https://chores.vezzaniphotography.com/api/chores/authorize`
+      window.location = `https://www.facebook.com/v9.0/dialog/oauth?client_id=107962317902323&redirect_uri=https://chores.vezzaniphotography.com/login&state=xxt&scope=email`
       next('/')
     }
   },
