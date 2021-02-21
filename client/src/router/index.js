@@ -25,14 +25,14 @@ const routes = [
       .then(user => {
         console.log(">>>user", user)
 
-        if (window.location.href.includes(`chores.vezzaniphotography.com`)) {
-          const search = Object.keys(user).reduce((params, attr) => {
-            const value = user[attr]
-            params.push(`${attr}=${value}`)
-            return params
-          }, [])
-          window.location = `https://chores-local.vezzaniphotography.com?${search.join("&")}`
-        }
+        // if (window.location.href.includes(`chores.vezzaniphotography.com`)) {
+        //   const search = Object.keys(user).reduce((params, attr) => {
+        //     const value = user[attr]
+        //     params.push(`${attr}=${value}`)
+        //     return params
+        //   }, [])
+        //   window.location = `https://chores-local.vezzaniphotography.com?${search.join("&")}`
+        // }
       })
       .catch(err => console.error(`Unable to authorize`, err))
 
