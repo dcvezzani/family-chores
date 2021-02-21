@@ -72,7 +72,7 @@ router.get('/token', async function(req, res, next) {
   .then(data => getUser(data.access_token))
   .catch(err => console.error(`Unable to get token`, err))
 
-  res.json({ data })
+  res.json({ user: data })
 })
   
 // router.get('/logi
