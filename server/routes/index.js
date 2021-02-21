@@ -35,7 +35,7 @@ const getToken = (code) => {
     url: 'https://graph.facebook.com/v9.0/oauth/access_token',
     qs: {
       client_id: '107962317902323',
-      redirect_uri: 'https://chores.vezzaniphotography.com/login',
+      redirect_uri: 'https://chores.vezzaniphotography.com/token',
       client_secret: 'ffc294287fbe2192815f50cc76943871',
       code,
 
@@ -59,7 +59,7 @@ const getToken = (code) => {
 }
 
 router.get('/authorize', function (req, res) {
-  var uri = `https://www.facebook.com/v9.0/dialog/oauth?client_id=107962317902323&redirect_uri=https://chores.vezzaniphotography.com/login&state=xxt&scope=email`
+  var uri = `https://www.facebook.com/v9.0/dialog/oauth?client_id=107962317902323&redirect_uri=https://chores.vezzaniphotography.com/token&state=xxt&scope=email`
   console.log(">>>uri", uri)
   res.redirect(uri)
 })
