@@ -8,6 +8,23 @@
   </div>
 </template>
 
+<script>
+
+export default {
+  name: 'App',
+  props: ['msg'],
+  data() {
+    return {
+      data: null,
+    }
+  },
+  mounted() {
+    // window.location = `https://chores.vezzaniphotography.com/api/chores/authorize`
+  },
+}
+</script>
+
+
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

@@ -10,6 +10,27 @@ const routes = [
     name: 'Home',
     component: Home
   },
+
+  {
+    path: '/login',
+    name: 'Login',
+    beforeEnter: async (to, from, next) => {
+      const pathParts = to.fullPath.split('?')
+      const search = (pathParts.length > 1) ? `?${pathParts[1]}` : ''
+      console.log(">>>search", search)
+      
+      let url = `https://chores.vezzaniphotography.com/api/chores/token${search}`
+      const state = await fetch(url)
+      .then(response => response.json())
+      .then(data => {
+        // this.data = data
+        console.log(">>>data", data)
+      })
+      .catch(err => console.error(`Unable to authorize`, err))
+
+      next('/')
+    }
+  },
   {
     path: '/about',
     name: 'About',
