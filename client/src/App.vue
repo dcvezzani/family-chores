@@ -20,7 +20,7 @@ export default {
     }
   },
   mounted() {
-    // window.location = `https://chores.vezzaniphotography.com/api/chores/authorize`
+    window.location = `https://chores.vezzaniphotography.com/api/chores/authorize`
   },
 }
 </script>
