@@ -7,12 +7,12 @@ const config = {
   "client_id": "107962317902323",
   "redirect_uri": "https://chores.vezzaniphotography.com/token",
   "scope": "email",
-  "graph_base_url": "https://graph.facebook.com/v9.0"
+  "graph_base_url": "https://graph.facebook.com/v9.0",
   "client_secret": 'ffc294287fbe2192815f50cc76943871',
 }
 
 const localConfig = {
-  "graph_base_url": "https://chores-local.vezzaniphotography.com"
+  "graph_base_url": "https://chores-local.vezzaniphotography.com",
   "user": {
     "id": "10225108674728397",
     "name": "David Curtis Vezzani",
