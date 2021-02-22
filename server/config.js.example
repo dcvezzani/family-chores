@@ -2,12 +2,13 @@ exports.config = {
   "client_id": "999999999999999",
   "redirect_uri": "https://app.example.com/token",
   "scope": "email",
+  "oauth_base_url": "https://www.facebook.com/v9.0/dialog/oauth",
   "graph_base_url": "https://graph.facebook.com/v9.0",
   "client_secret": 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
 }
 
 exports.localConfig = {
-  "graph_base_url": "https://chores-local.vezzaniphotography.com",
+  "oauth_base_url": "https://app.example.com/token",
   "user": {
     "id": "999999999999999",
     "name": "John Doe",

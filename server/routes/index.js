@@ -7,8 +7,8 @@ var router = express.Router();
 const isNonProd = () => (['development', 'local', 'dev'].includes(process.env.NODE_ENV))
 
 const AUTHORIZE_URI = (isNonProd())
-  ? `${localConfig.graph_base_url}/token?client_id=${config.client_id}&redirect_uri=${config.redirect_uri}&state=xxt&scope=${config.scope}`
-  : `${config.graph_base_url}/dialog/oauth?client_id=${config.client_id}&redirect_uri=${config.redirect_uri}&state=xxt&scope=${config.scope}`
+  ? `${localConfig.oauth_base_url}?client_id=${config.client_id}&redirect_uri=${config.redirect_uri}&state=xxt&scope=${config.scope}`
+  : `${config.oauth_base_url}?client_id=${config.client_id}&redirect_uri=${config.redirect_uri}&state=xxt&scope=${config.scope}`
 
 const getUser = (token) => {
 // GET https://graph.facebook.com/v9.0/me?fields=id%2Cname%2Cemail&access_token=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxsk9X3ogqxobxTwsDyZBpM6sOItKbMr0Ggba6yBVk3l1DKZBcbZBgWofloYzuhwYjsZBDzGlHQs5hwqSguDEnaHOHA5rzzt7ZBh8NIa6QuCkX9ZAbH9AHlsL7fy5qlYskyaHTC6wkfOAZDZD
