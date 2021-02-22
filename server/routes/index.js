@@ -1,5 +1,6 @@
 var express = require('express');
 var request = require('request');
+var { users } = require('../cache');
 var router = express.Router();
 
 const isNonProd = () => (['development', 'local', 'dev'].includes(process.env.NODE_ENV))
@@ -12,7 +13,19 @@ const AUTHORIZE_URI = (isNonProd)
 
 const getUser = (token) => {
 // GET https://graph.facebook.com/v9.0/me?fields=id%2Cname%2Cemail&access_token=EAABiMOZBbkfMBACxT2wNSMzpzMVykCSQNIsk9X3ogqxobxTwsDyZBpM6sOItKbMr0Ggba6yBVk3l1DKZBcbZBgWofloYzuhwYjsZBDzGlHQs5hwqSguDEnaHOHA5rzzt7ZBh8NIa6QuCkX9ZAbH9AHlsL7fy5qlYskyaHTC6wkfOAZDZD
-  
+ 
+  if (isNonProd) {
+    const user = {
+      "id": "10225108674728397",
+      "name": "David Curtis Vezzani",
+      "email": "dcvezzani@gmail.com",
+      token,
+    }
+  console.log(">>>getUser", user)
+
+    return Promise.resolve(user)
+  }
+
   const options = {
     method: 'get',
     url: 'https://graph.facebook.com/v9.0/me',
@@ -37,7 +50,43 @@ const getUser = (token) => {
   
 }
 
+const registerUser = (user) => {
+    const { id, name, email } = user
+    const expires_at_string = user.token.expires_at_string
+    users.set(user.id, user)
+    // const search = Object.keys(user).reduce((params, attr) => {
+    //   const value = user[attr]
+    //   params.push(`${attr}=${value}`)
+    //   return params
+    // }, [])
+    // const uri = `https://chores-local.vezzaniphotography.com?${search.join("&")}`
+    // res.redirect(uri)
+
+    return Promise.resolve({ id, name, email, expires_at_string })
+}
+
 const getToken = (code) => {
+  if (isNonProd) {
+    // const jwt = require('njwt')
+    // const claims = { iss: 'fun-with-jwts', sub: 'AzureDiamond' }
+    // const token = jwt.create(claims, 'top-secret-phrase')
+    // token.setExpiration(new Date().getTime() + 60*1000)
+    
+    const expires_in = 5183501
+    const expires_at = Math.round((new Date()).getTime()) + expires_in
+
+    const token = {
+        "access_token": "xAABiMOZBbkfMBACxT2wNSMzpzMVykCSQNIsk9X3ogqxobxTwsDyZBpM6sOItKbMr0Ggba6yBVk3l1DKZBcbZBgWofloYzuhwYjsZBDzGlHQs5hwqSguDEnaHOHA5rzzt7ZBh8NIa6QuCkX9ZAbH9AHlsL7fy5qlYskyaHTC6wkfOAZDZD",
+        "token_type": "bearer",
+        expires_in, 
+        expires_at,
+        "expires_at_string": new Date(expires_at).toUTCString(),
+    }
+
+    console.log(">>>getToken", token)
+    return Promise.resolve(token)
+  }
+  
   const options = {
     method: 'get',
     url: 'https://graph.facebook.com/v9.0/oauth/access_token',
@@ -66,6 +115,16 @@ const getToken = (code) => {
   })
 }
 
+router.get('/userIsAuthorized', function (req, res) {
+    const { userId } = req.query
+    const user = users.get(userId)
+    return res.json({isAuthoried: true})
+})
+  
+router.get('/users', function (req, res) {
+    return res.json(users.all)
+})
+  
 router.get('/authorize', function (req, res) {
   const uri = AUTHORIZE_URI
 
@@ -74,23 +133,12 @@ router.get('/authorize', function (req, res) {
 })
   
 router.get('/token', async function(req, res, next) {
-  if (isNonProd) {
-    const user = {id: "10225108674728397", name: "David Curtis Vezzani", email: "dcvezzani@gmail.com"}
-    // const search = Object.keys(user).reduce((params, attr) => {
-    //   const value = user[attr]
-    //   params.push(`${attr}=${value}`)
-    //   return params
-    // }, [])
-    // const uri = `https://chores-local.vezzaniphotography.com?${search.join("&")}`
-    // res.redirect(uri)
-    return res.json(user)
-  }
-
   const { code } = req.query
   if (!code) return res.status(400).json({ message: `Missing authorization grant code` })
 
   const data = await getToken(code)
-  .then(data => getUser(data.access_token))
+  .then(data => getUser(data))
+  .then(data => registerUser(data))
   .catch(err => console.error(`Unable to get token`, err))
 
   res.json(data)

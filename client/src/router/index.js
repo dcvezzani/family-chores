@@ -1,6 +1,10 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+import Secret from '../components/Secret.vue'
+import { logout, login, authorize } from '../services'
+import { Cookies } from '../cookies'
+import { handlePromiseError } from '../errors'
 
 Vue.use(VueRouter)
 
@@ -16,14 +20,14 @@ const routes = [
     name: 'Token',
     beforeEnter: async (to, from, next) => {
       const pathParts = to.fullPath.split('?')
-      const search = (pathParts.length > 1) ? `?${pathParts[1]}` : ''
+      const search = (pathParts.length > 1) ? `${pathParts[1]}` : ''
       console.log(">>>search", search)
       
       let url = `${process.env.VUE_APP_API_TOKEN}${search}`
       const state = await fetch(url)
       .then(response => response.json())
       .then(user => {
-        console.log(">>>user", user)
+        login(user)
 
         // if (window.location.href.includes(`chores.vezzaniphotography.com`)) {
         //   const search = Object.keys(user).reduce((params, attr) => {
@@ -36,6 +40,12 @@ const routes = [
       })
       .catch(err => console.error(`Unable to authorize`, err))
 
+      const redirectPath = localStorage.getItem('redirectPath');
+      if (redirectPath) {
+        localStorage.removeItem('redirectPath');
+        return next(redirectPath)
+      }
+      
       next('/')
     }
   },
@@ -43,10 +53,28 @@ const routes = [
     path: '/login',
     name: 'Login',
     beforeEnter: async (to, from, next) => {
-      const uri = process.env.VUE_APP_API_AUTHORIZE
-      // const uri = `https://www.facebook.com/v9.0/dialog/oauth?client_id=107962317902323&redirect_uri=https://chores.vezzaniphotography.com/token&state=xxt&scope=email`
-      window.location = uri
+      await authorize({force: true})
+      .catch(handlePromiseError(`Unable to sign in user`, null))
       next('/')
+    }
+  },
+  {
+    path: '/logout',
+    name: 'Logout',
+    beforeEnter: async (to, from, next) => {
+      logout()
+      next('/')
+    }
+  },
+  {
+    path: '/secret',
+    name: 'Secret',
+    component: Secret,
+    beforeEnter: async (to, from, next) => {
+      const _isAuthorized = await authorize({to})
+      .catch(handlePromiseError(`Unable to determine if user is authorized`, false))
+
+      if (_isAuthorized) return next()
     }
   },
   {
