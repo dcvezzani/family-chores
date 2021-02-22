@@ -1,29 +1,8 @@
 var express = require('express');
 var request = require('request');
 var { users } = require('../cache');
+var { localConfig, config } = require('../config');
 var router = express.Router();
-
-const config = {
-  "client_id": "107962317902323",
-  "redirect_uri": "https://chores.vezzaniphotography.com/token",
-  "scope": "email",
-  "graph_base_url": "https://graph.facebook.com/v9.0",
-  "client_secret": 'ffc294287fbe2192815f50cc76943871',
-}
-
-const localConfig = {
-  "graph_base_url": "https://chores-local.vezzaniphotography.com",
-  "user": {
-    "id": "10225108674728397",
-    "name": "David Curtis Vezzani",
-    "email": "dcvezzani@gmail.com",
-  },
-  "token": {
-    "access_token": "xAABiMOZBbkfMBACxT2wNSMzpzMVykCSQNIsk9X3ogqxobxTwsDyZBpM6sOItKbMr0Ggba6yBVk3l1DKZBcbZBgWofloYzuhwYjsZBDzGlHQs5hwqSguDEnaHOHA5rzzt7ZBh8NIa6QuCkX9ZAbH9AHlsL7fy5qlYskyaHTC6wkfOAZDZD",
-    "token_type": "bearer",
-    "expires_in": 5183501, 
-  }
-}
 
 const isNonProd = () => (['development', 'local', 'dev'].includes(process.env.NODE_ENV))
 
