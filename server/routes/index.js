@@ -6,6 +6,7 @@ var router = express.Router();
 
 const isNonProd = () => (['development', 'local', 'dev'].includes(process.env.NODE_ENV))
 
+console.log(">>>isNonProd", isNonProd, process.env.NODE_ENV)
 const AUTHORIZE_URI = (isNonProd)
   ? `${localConfig.graph_base_url}/token?client_id=${config.client_id}&redirect_uri=${config.redirect_uri}&state=xxt&scope=${config.scope}`
   : `${config.graph_base_url}/dialog/oauth?client_id=${config.client_id}&redirect_uri=${config.redirect_uri}&state=xxt&scope=${config.scope}`
