@@ -3,32 +3,50 @@ var request = require('request');
 var { users } = require('../cache');
 var router = express.Router();
 
+const config = {
+  "client_id": "107962317902323",
+  "redirect_uri": "https://chores.vezzaniphotography.com/token",
+  "scope": "email",
+  "graph_base_url": "https://graph.facebook.com/v9.0",
+  "client_secret": 'ffc294287fbe2192815f50cc76943871',
+}
+
+const localConfig = {
+  "graph_base_url": "https://chores-local.vezzaniphotography.com",
+  "user": {
+    "id": "10225108674728397",
+    "name": "David Curtis Vezzani",
+    "email": "dcvezzani@gmail.com",
+  },
+  "token": {
+    "access_token": "xAABiMOZBbkfMBACxT2wNSMzpzMVykCSQNIsk9X3ogqxobxTwsDyZBpM6sOItKbMr0Ggba6yBVk3l1DKZBcbZBgWofloYzuhwYjsZBDzGlHQs5hwqSguDEnaHOHA5rzzt7ZBh8NIa6QuCkX9ZAbH9AHlsL7fy5qlYskyaHTC6wkfOAZDZD",
+    "token_type": "bearer",
+    "expires_in": 5183501, 
+  }
+}
+
 const isNonProd = () => (['development', 'local', 'dev'].includes(process.env.NODE_ENV))
 
 const AUTHORIZE_URI = (isNonProd)
-  ? `https://chores-local.vezzaniphotography.com/token?client_id=107962317902323&redirect_uri=https://chores.vezzaniphotography.com/token&state=xxt&scope=email`
-  : `https://www.facebook.com/v9.0/dialog/oauth?client_id=107962317902323&redirect_uri=https://chores.vezzaniphotography.com/token&state=xxt&scope=email`
-
-  // var uri = `https://www.facebook.com/v9.0/dialog/oauth?client_id=107962317902323&redirect_uri=https://chores.vezzaniphotography.com/token&state=xxt&scope=email`
+  ? `${localConfig.graph_base_url}/token?client_id=${config.client_id}&redirect_uri=${config.redirect_uri}&state=xxt&scope=${config.scope}`
+  : `${config.graph_base_url}/dialog/oauth?client_id=${config.client_id}&redirect_uri=${config.redirect_uri}&state=xxt&scope=${config.scope}`
 
 const getUser = (token) => {
-// GET https://graph.facebook.com/v9.0/me?fields=id%2Cname%2Cemail&access_token=EAABiMOZBbkfMBACxT2wNSMzpzMVykCSQNIsk9X3ogqxobxTwsDyZBpM6sOItKbMr0Ggba6yBVk3l1DKZBcbZBgWofloYzuhwYjsZBDzGlHQs5hwqSguDEnaHOHA5rzzt7ZBh8NIa6QuCkX9ZAbH9AHlsL7fy5qlYskyaHTC6wkfOAZDZD
+// GET https://graph.facebook.com/v9.0/me?fields=id%2Cname%2Cemail&access_token=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxsk9X3ogqxobxTwsDyZBpM6sOItKbMr0Ggba6yBVk3l1DKZBcbZBgWofloYzuhwYjsZBDzGlHQs5hwqSguDEnaHOHA5rzzt7ZBh8NIa6QuCkX9ZAbH9AHlsL7fy5qlYskyaHTC6wkfOAZDZD
  
   if (isNonProd) {
     const user = {
-      "id": "10225108674728397",
-      "name": "David Curtis Vezzani",
-      "email": "dcvezzani@gmail.com",
+      ...localConfig.user,
       token,
     }
-  console.log(">>>getUser", user)
+    console.log(">>>getUser", user)
 
     return Promise.resolve(user)
   }
 
   const options = {
     method: 'get',
-    url: 'https://graph.facebook.com/v9.0/me',
+    url: `${config.graph_base_url}/me`,
     qs: {
       fields: 'id,name,email',
       access_token: token,
@@ -67,35 +85,24 @@ const registerUser = (user) => {
 
 const getToken = (code) => {
   if (isNonProd) {
-    // const jwt = require('njwt')
-    // const claims = { iss: 'fun-with-jwts', sub: 'AzureDiamond' }
-    // const token = jwt.create(claims, 'top-secret-phrase')
-    // token.setExpiration(new Date().getTime() + 60*1000)
-    
-    const expires_in = 5183501
-    const expires_at = Math.round((new Date()).getTime()) + expires_in
-
+    const expires_at = Math.round((new Date()).getTime()) + localConfig.token.expires_in
     const token = {
-        "access_token": "xAABiMOZBbkfMBACxT2wNSMzpzMVykCSQNIsk9X3ogqxobxTwsDyZBpM6sOItKbMr0Ggba6yBVk3l1DKZBcbZBgWofloYzuhwYjsZBDzGlHQs5hwqSguDEnaHOHA5rzzt7ZBh8NIa6QuCkX9ZAbH9AHlsL7fy5qlYskyaHTC6wkfOAZDZD",
-        "token_type": "bearer",
-        expires_in, 
-        expires_at,
-        "expires_at_string": new Date(expires_at).toUTCString(),
+      ...localConfig.token,
+      expires_at,
+      "expires_at_string": new Date(expires_at).toUTCString(),
     }
 
     console.log(">>>getToken", token)
     return Promise.resolve(token)
   }
   
+  const { client_id, redirect_uri, client_secret } = config
   const options = {
     method: 'get',
-    url: 'https://graph.facebook.com/v9.0/oauth/access_token',
+    url: `${config.graph_base_url}/oauth/access_token`,
     qs: {
-      client_id: '107962317902323',
-      redirect_uri: 'https://chores.vezzaniphotography.com/token',
-      client_secret: 'ffc294287fbe2192815f50cc76943871',
+      client_id, redirect_uri, client_secret,
       code,
-
     },
     headers: {
     },
