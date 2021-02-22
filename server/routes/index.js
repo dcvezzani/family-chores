@@ -87,7 +87,7 @@ const getToken = (code) => {
   if (isNonProd) {
     const expires_at = Math.round((new Date()).getTime()) + localConfig.token.expires_in
     const token = {
-      ...localConfig.token
+      ...localConfig.token,
       expires_at,
       "expires_at_string": new Date(expires_at).toUTCString(),
     }
