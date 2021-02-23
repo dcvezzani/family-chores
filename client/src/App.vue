@@ -5,31 +5,19 @@
       <span v-if="false"> | <router-link to="/token">Token</router-link> </span>
       <span> | <router-link to="/secret">Secret</router-link> </span>
       <span> | <router-link to="/about">About</router-link> </span>
-      <span v-if="!userIsLoggedIn"> | <router-link to="/login">Login (local)</router-link> </span>
-      <span v-if="userIsLoggedIn"> | <router-link to="/logout">Logout</router-link> </span>
+      <Auth></Auth>
     </div>
     <router-view/>
   </div>
 </template>
 
 <script>
-const { Cookies } = require('./cookies')
+import Auth from './components/Auth.vue'
 
 export default {
   name: 'App',
   props: ['msg'],
-  data() {
-    return {
-      userIsLoggedIn: false,
-    }
-  },
-  mounted() {
-    Event.$on('onLoginLogoutEvent', () => {
-      const cookies = new Cookies()
-      this.userIsLoggedIn = (cookies.get('chores_app_loggedin') === 'true')
-    })
-    Event.$emit('onLoginLogoutEvent')
-  },
+  components: {Auth},
 }
 </script>
 
