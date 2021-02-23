@@ -1,4 +1,4 @@
-const { Cookies, getExpiresInSeconds } = require('../cookies')
+const { Cookies, getExpiresInSeconds } = require('./cookies')
 
 exports.logout = () => { 
   localStorage.removeItem('user');
@@ -38,4 +38,5 @@ exports.authorize = async (options={}) => {
   window.location = uri
   return false
 }
+
 

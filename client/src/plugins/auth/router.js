@@ -1,4 +1,4 @@
-import { logout, login, authorize } from '../services'
+import { logout, login, authorize } from './index'
 import { handlePromiseError } from '../errors'
 
 export default [
@@ -46,4 +46,5 @@ export default [
     }
   },
 ]
+
 

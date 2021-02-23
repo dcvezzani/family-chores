@@ -4,6 +4,7 @@
       <router-link to="/">Home</router-link>
       <span v-if="false"> | <router-link to="/token">Token</router-link> </span>
       <span> | <router-link to="/secret">Secret</router-link> </span>
+      <span> | <router-link to="/profile">Profile</router-link> </span>
       <span> | <router-link to="/about">About</router-link> </span>
       <Auth></Auth>
     </div>
@@ -12,12 +13,9 @@
 </template>
 
 <script>
-import Auth from './components/Auth.vue'
-
 export default {
   name: 'App',
   props: ['msg'],
-  components: {Auth},
 }
 </script>
 

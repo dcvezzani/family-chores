@@ -1,5 +1,5 @@
 <template>
-  <div class="secret">
+  <div class="profile">
     <h1>{{ msg }}</h1>
     <div v-if="user">{{user.name}}</div>
   </div>
@@ -9,10 +9,10 @@
 import { getUser } from '../plugins/auth'
 
 export default {
-  name: 'Secret',
+  name: 'Profile',
   data() {
     return {
-      msg: 'this is secret',
+      msg: 'here is your profile',
       user: null,
     }
   },
