@@ -1,4 +1,4 @@
-const { Cookies } = require('./cookies')
+const { Cookies, getExpiresInSeconds } = require('./cookies')
 
 exports.logout = () => { 
   localStorage.removeItem('user');
@@ -18,6 +18,7 @@ exports.login = (user) => {
   localStorage.setItem('user', JSON.stringify(user));
   
   const cookies = new Cookies()
+  // const expires_at_string = getExpiresInSeconds(10)
   cookies.set('chores_app_loggedin', 'true', {expiresAt: user.expires_at_string})
   Event.$emit('onLoginLogoutEvent')
 }
@@ -26,7 +27,10 @@ exports.authorize = async (options={}) => {
   const { force, to } = options
 
   const cookies = new Cookies()
-  if (force != true && cookies.get('chores_app_loggedin') === 'true') return true
+  if (force != true && cookies.get('chores_app_loggedin') === 'true') {
+    Event.$emit('onLoginLogoutEvent')
+    return true
+  }
 
   if (to) localStorage.setItem('redirectPath', to.fullPath);
 

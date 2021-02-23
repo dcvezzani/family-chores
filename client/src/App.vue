@@ -28,6 +28,7 @@ export default {
       const cookies = new Cookies()
       this.userIsLoggedIn = (cookies.get('chores_app_loggedin') === 'true')
     })
+    Event.$emit('onLoginLogoutEvent')
   },
 }
 </script>

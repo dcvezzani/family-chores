@@ -53,7 +53,9 @@ const routes = [
     path: '/login',
     name: 'Login',
     beforeEnter: async (to, from, next) => {
-      await authorize({force: true})
+      // await authorize({force: true})
+      await authorize()
+      // .then(() => Event.$emit('onLoginLogoutEvent'))
       .catch(handlePromiseError(`Unable to sign in user`, null))
       next('/')
     }

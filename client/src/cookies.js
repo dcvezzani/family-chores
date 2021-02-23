@@ -11,7 +11,7 @@ const parseCookies = () => {
   return cookiesMap  
 }
 
-const getExpiresInSeconds = (seconds) => {
+exports.getExpiresInSeconds = (seconds) => {
   var now = new Date();
   var time = now.getTime() + (seconds * 1000);
   now.setTime(time);
@@ -49,8 +49,8 @@ exports.Cookies = class {
 
   set(name, value, options={}) {
     if (options.expiresAt) {}
-    else if (options.expiresInSeconds) options.expiresAt = getExpiresInSeconds(options.expiresInSeconds)
-    else options.expiresAt = getExpiresInSeconds(3600)
+    else if (options.expiresInSeconds) options.expiresAt = exports.getExpiresInSeconds(options.expiresInSeconds)
+    else options.expiresAt = exports.getExpiresInSeconds(3600)
 
     console.log(">>>setting cookie", {name, value, options})
     document.cookie = `${name}=${value}; expires=${options.expiresAt}; domain=.vezzaniphotography.com;`
@@ -65,8 +65,8 @@ exports.Cookies = class {
 
   clear(name, options={}) {
     if (options.expiresAt) {}
-    else if (options.expiresInSeconds) options.expiresAt = getExpiresInSeconds(options.expiresInSeconds)
-    else options.expiresAt = getExpiresInSeconds(0)
+    else if (options.expiresInSeconds) options.expiresAt = exports.getExpiresInSeconds(options.expiresInSeconds)
+    else options.expiresAt = exports.getExpiresInSeconds(0)
 
     console.log(">>>clearing cookie", {name, options})
     document.cookie = `${name}=; expires=${options.expiresAt}; domain=.vezzaniphotography.com;`
