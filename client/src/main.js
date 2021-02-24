@@ -6,6 +6,9 @@ import Auth from './plugins/auth'
 
 Vue.config.productionTip = false
 
+// https://hackernoon.com/how-to-use-bulma-and-vuejs-together-z0103ucp
+require('@/assets/main.scss');
+
 Vue.use(Auth)
 
 window.Event = new Vue()

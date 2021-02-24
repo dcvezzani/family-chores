@@ -6,6 +6,8 @@ var logger = require('morgan');
 var cors = require('cors');
 
 var indexRouter = require('./routes/index');
+var authRouter = require('./routes/auth');
+var templatesRouter = require('./routes/templates');
 
 var app = express();
 
@@ -21,7 +23,9 @@ const pathForEnvironment = (path) => {
 }
 
 console.log(">>>pathForEnvironment('/')", process.env.NODE_ENV, pathForEnvironment('/'))
+app.use(pathForEnvironment('/auth'), authRouter);
 app.use(pathForEnvironment('/'), indexRouter);
+app.use(pathForEnvironment('/templates'), templatesRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

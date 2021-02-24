@@ -1,0 +1,935 @@
+{
+  "name": "vacuum",
+  "text": "Vacuum",
+  "type": "chore-zones",
+  "zones": [
+    {
+      "name": "bathroom-02",
+      "text": "Bathroom 2 (Upstairs)",
+      "frequency": "weekly",
+      "column": 1,
+      "weeks": [
+        {
+          "name": "1",
+          "text": "1",
+          "completed": false
+        },
+        {
+          "name": "2",
+          "text": "2",
+          "completed": false
+        },
+        {
+          "name": "3",
+          "text": "3",
+          "completed": false
+        },
+        {
+          "name": "4",
+          "text": "4",
+          "completed": false
+        }
+      ],
+      "sub-zones": [
+        {
+          "name": "wash-bath-mat",
+          "text": "Wash bath mat (monthly)",
+          "frequency": "monthly",
+          "progress": [
+            {
+              "name": "1",
+              "text": "1",
+              "completed": false
+            }
+          ]
+        },
+        {
+          "name": "wash-shower-curtain",
+          "text": "Wash shower curtain (monthly)",
+          "frequency": "monthly",
+          "progress": [
+            {
+              "name": "1",
+              "text": "1",
+              "completed": false
+            }
+          ]
+        },
+        {
+          "name": "replace-bath-towels",
+          "text": "Replace bath towels",
+          "frequency": "weekly",
+          "progress": [
+            {
+              "name": "1",
+              "text": "1",
+              "completed": false
+            },
+            {
+              "name": "2",
+              "text": "2",
+              "completed": false
+            },
+            {
+              "name": "3",
+              "text": "3",
+              "completed": false
+            },
+            {
+              "name": "4",
+              "text": "4",
+              "completed": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "office",
+      "text": "Office (Upstairs)",
+      "frequency": "weekly",
+      "column": 1,
+      "weeks": [
+        {
+          "name": "1",
+          "text": "1",
+          "completed": false
+        },
+        {
+          "name": "2",
+          "text": "2",
+          "completed": false
+        },
+        {
+          "name": "3",
+          "text": "3",
+          "completed": false
+        },
+        {
+          "name": "4",
+          "text": "4",
+          "completed": false
+        }
+      ],
+      "sub-zones": [
+        {
+          "name": "vacuum-carpet",
+          "text": "Vacuum carpet",
+          "frequency": "weekly",
+          "progress": [
+            {
+              "name": "1",
+              "text": "1",
+              "completed": false
+            },
+            {
+              "name": "2",
+              "text": "2",
+              "completed": false
+            },
+            {
+              "name": "3",
+              "text": "3",
+              "completed": false
+            },
+            {
+              "name": "4",
+              "text": "4",
+              "completed": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "hall-and-stairs",
+      "text": "Hall and Stairs (Upstairs)",
+      "frequency": "weekly",
+      "column": 1,
+      "weeks": [
+        {
+          "name": "1",
+          "text": "1",
+          "completed": false
+        },
+        {
+          "name": "2",
+          "text": "2",
+          "completed": false
+        },
+        {
+          "name": "3",
+          "text": "3",
+          "completed": false
+        },
+        {
+          "name": "4",
+          "text": "4",
+          "completed": false
+        }
+      ],
+      "sub-zones": [
+        {
+          "name": "vacuum-carpet",
+          "text": "Vacuum carpet",
+          "frequency": "weekly",
+          "progress": [
+            {
+              "name": "1",
+              "text": "1",
+              "completed": false
+            },
+            {
+              "name": "2",
+              "text": "2",
+              "completed": false
+            },
+            {
+              "name": "3",
+              "text": "3",
+              "completed": false
+            },
+            {
+              "name": "4",
+              "text": "4",
+              "completed": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "personal",
+      "text": "Personal (Bedroom)",
+      "frequency": "weekly",
+      "column": 1,
+      "weeks": [
+        {
+          "name": "1",
+          "text": "1",
+          "completed": false
+        },
+        {
+          "name": "2",
+          "text": "2",
+          "completed": false
+        },
+        {
+          "name": "3",
+          "text": "3",
+          "completed": false
+        },
+        {
+          "name": "4",
+          "text": "4",
+          "completed": false
+        }
+      ],
+      "sub-zones": [
+        {
+          "name": "change-bedding",
+          "text": "Change Bedding (2x/month)",
+          "frequency": "bi-monthly",
+          "progress": [
+            {
+              "name": "1",
+              "text": "1",
+              "completed": false
+            },
+            {
+              "name": "2",
+              "text": "2",
+              "completed": false
+            }
+          ]
+        },
+        {
+          "name": "vacuum-dust",
+          "text": "Vacuum/Dust",
+          "frequency": "weekly",
+          "completed": false,
+          "progress": [
+            {
+              "name": "1",
+              "text": "1",
+              "completed": false
+            },
+            {
+              "name": "2",
+              "text": "2",
+              "completed": false
+            },
+            {
+              "name": "3",
+              "text": "3",
+              "completed": false
+            },
+            {
+              "name": "4",
+              "text": "4",
+              "completed": false
+            }
+          ]
+        },
+        {
+          "name": "empty-trash",
+          "text": "Empty Trash",
+          "frequency": "weekly",
+          "completed": false,
+          "progress": [
+            {
+              "name": "1",
+              "text": "1",
+              "completed": false
+            },
+            {
+              "name": "2",
+              "text": "2",
+              "completed": false
+            },
+            {
+              "name": "3",
+              "text": "3",
+              "completed": false
+            },
+            {
+              "name": "4",
+              "text": "4",
+              "completed": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "entry-foyer-library",
+      "text": "Entry Foyer/Library",
+      "frequency": "weekly",
+      "column": 1,
+      "weeks": [
+        {
+          "name": "1",
+          "text": "1",
+          "completed": false
+        },
+        {
+          "name": "2",
+          "text": "2",
+          "completed": false
+        },
+        {
+          "name": "3",
+          "text": "3",
+          "completed": false
+        },
+        {
+          "name": "4",
+          "text": "4",
+          "completed": false
+        }
+      ],
+      "sub-zones": [
+        {
+          "name": "vacuum-area-rug",
+          "text": "Vacuum area rug",
+          "frequency": "weekly",
+          "progress": [
+            {
+              "name": "1",
+              "text": "1",
+              "completed": false
+            },
+            {
+              "name": "2",
+              "text": "2",
+              "completed": false
+            },
+            {
+              "name": "3",
+              "text": "3",
+              "completed": false
+            },
+            {
+              "name": "2",
+              "text": "2",
+              "completed": false
+            }
+          ]
+        },
+        {
+          "name": "vacuum-door-mat",
+          "text": "Vacuum/shake out door mat",
+          "frequency": "weekly",
+          "progress": [
+            {
+              "name": "1",
+              "text": "1",
+              "completed": false
+            },
+            {
+              "name": "2",
+              "text": "2",
+              "completed": false
+            },
+            {
+              "name": "3",
+              "text": "3",
+              "completed": false
+            },
+            {
+              "name": "2",
+              "text": "2",
+              "completed": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "family-room",
+      "text": "Family Room",
+      "frequency": "weekly",
+      "column": 1,
+      "weeks": [
+        {
+          "name": "1",
+          "text": "1",
+          "completed": false
+        },
+        {
+          "name": "2",
+          "text": "2",
+          "completed": false
+        },
+        {
+          "name": "3",
+          "text": "3",
+          "completed": false
+        },
+        {
+          "name": "4",
+          "text": "4",
+          "completed": false
+        }
+      ],
+      "sub-zones": [
+        {
+          "name": "vacuum-area-rug",
+          "text": "Vacuum area rug",
+          "frequency": "weekly",
+          "progress": [
+            {
+              "name": "1",
+              "text": "1",
+              "completed": false
+            },
+            {
+              "name": "2",
+              "text": "2",
+              "completed": false
+            },
+            {
+              "name": "3",
+              "text": "3",
+              "completed": false
+            },
+            {
+              "name": "2",
+              "text": "2",
+              "completed": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "bathroom-01",
+      "text": "Bathroom 1 (Main Level)",
+      "frequency": "weekly",
+      "column": 1,
+      "weeks": [
+        {
+          "name": "1",
+          "text": "1",
+          "completed": false
+        },
+        {
+          "name": "2",
+          "text": "2",
+          "completed": false
+        },
+        {
+          "name": "3",
+          "text": "3",
+          "completed": false
+        },
+        {
+          "name": "4",
+          "text": "4",
+          "completed": false
+        }
+      ],
+      "sub-zones": [
+        {
+          "name": "hand-towels",
+          "text": "Replace hand towels (wash old ones)",
+          "frequency": "weekly",
+          "progress": [
+            {
+              "name": "1",
+              "text": "1",
+              "completed": false
+            },
+            {
+              "name": "2",
+              "text": "2",
+              "completed": false
+            },
+            {
+              "name": "3",
+              "text": "3",
+              "completed": false
+            },
+            {
+              "name": "2",
+              "text": "2",
+              "completed": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "laundry-room",
+      "text": "Laundry Room",
+      "frequency": "weekly",
+      "column": 2,
+      "weeks": [
+        {
+          "name": "1",
+          "text": "1",
+          "completed": false
+        },
+        {
+          "name": "2",
+          "text": "2",
+          "completed": false
+        },
+        {
+          "name": "3",
+          "text": "3",
+          "completed": false
+        },
+        {
+          "name": "4",
+          "text": "4",
+          "completed": false
+        }
+      ],
+      "sub-zones": [
+      ]
+    },
+    {
+      "name": "kitchen",
+      "text": "Kitchen",
+      "frequency": "weekly",
+      "column": 2,
+      "weeks": [
+        {
+          "name": "1",
+          "text": "1",
+          "completed": false
+        },
+        {
+          "name": "2",
+          "text": "2",
+          "completed": false
+        },
+        {
+          "name": "3",
+          "text": "3",
+          "completed": false
+        },
+        {
+          "name": "4",
+          "text": "4",
+          "completed": false
+        }
+      ],
+      "sub-zones": [
+        {
+          "name": "vacuum-door-mats",
+          "text": "Vacuum/shake out door mats",
+          "frequency": "weekly",
+          "progress": [
+            {
+              "name": "1",
+              "text": "1",
+              "completed": false
+            },
+            {
+              "name": "2",
+              "text": "2",
+              "completed": false
+            },
+            {
+              "name": "3",
+              "text": "3",
+              "completed": false
+            },
+            {
+              "name": "2",
+              "text": "2",
+              "completed": false
+            }
+          ]
+        },
+        {
+          "name": "kitchen-towels",
+          "text": "Wash kitchen towels",
+          "frequency": "weekly",
+          "progress": [
+            {
+              "name": "1",
+              "text": "1",
+              "completed": false
+            },
+            {
+              "name": "2",
+              "text": "2",
+              "completed": false
+            },
+            {
+              "name": "3",
+              "text": "3",
+              "completed": false
+            },
+            {
+              "name": "2",
+              "text": "2",
+              "completed": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "bathroom-03",
+      "text": "Bathroom 3 (MBR)",
+      "frequency": "weekly",
+      "column": 2,
+      "weeks": [
+        {
+          "name": "1",
+          "text": "1",
+          "completed": false
+        },
+        {
+          "name": "2",
+          "text": "2",
+          "completed": false
+        },
+        {
+          "name": "3",
+          "text": "3",
+          "completed": false
+        },
+        {
+          "name": "4",
+          "text": "4",
+          "completed": false
+        }
+      ],
+      "sub-zones": [
+        {
+          "name": "wash-bath-mat",
+          "text": "Wash bath mat (monthly)",
+          "frequency": "monthly",
+          "progress": [
+            {
+              "name": "1",
+              "text": "1",
+              "completed": false
+            }
+          ]
+        },
+        {
+          "name": "hand-towels",
+          "text": "Replace hand towels (wash old ones)",
+          "frequency": "weekly",
+          "progress": [
+            {
+              "name": "1",
+              "text": "1",
+              "completed": false
+            },
+            {
+              "name": "2",
+              "text": "2",
+              "completed": false
+            },
+            {
+              "name": "3",
+              "text": "3",
+              "completed": false
+            },
+            {
+              "name": "2",
+              "text": "2",
+              "completed": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "movie-room-stairs",
+      "text": "Movie Room/Stairs",
+      "frequency": "weekly",
+      "column": 2,
+      "weeks": [
+        {
+          "name": "1",
+          "text": "1",
+          "completed": false
+        },
+        {
+          "name": "2",
+          "text": "2",
+          "completed": false
+        },
+        {
+          "name": "3",
+          "text": "3",
+          "completed": false
+        },
+        {
+          "name": "4",
+          "text": "4",
+          "completed": false
+        }
+      ],
+      "sub-zones": [
+        {
+          "name": "vacuum-basement-stairs",
+          "text": "Vacuum basement stairs",
+          "frequency": "weekly",
+          "progress": [
+            {
+              "name": "1",
+              "text": "1",
+              "completed": false
+            },
+            {
+              "name": "2",
+              "text": "2",
+              "completed": false
+            },
+            {
+              "name": "3",
+              "text": "3",
+              "completed": false
+            },
+            {
+              "name": "2",
+              "text": "2",
+              "completed": false
+            }
+          ]
+        },
+        {
+          "name": "vacuum-movie-room-guest-room",
+          "text": "Vacuum movie room/guest room",
+          "frequency": "weekly",
+          "progress": [
+            {
+              "name": "1",
+              "text": "1",
+              "completed": false
+            },
+            {
+              "name": "2",
+              "text": "2",
+              "completed": false
+            },
+            {
+              "name": "3",
+              "text": "3",
+              "completed": false
+            },
+            {
+              "name": "2",
+              "text": "2",
+              "completed": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "art-room",
+      "text": "Art Room",
+      "frequency": "weekly",
+      "column": 2,
+      "weeks": [
+        {
+          "name": "1",
+          "text": "1",
+          "completed": false
+        },
+        {
+          "name": "2",
+          "text": "2",
+          "completed": false
+        },
+        {
+          "name": "3",
+          "text": "3",
+          "completed": false
+        },
+        {
+          "name": "4",
+          "text": "4",
+          "completed": false
+        }
+      ],
+      "sub-zones": [
+      ]
+    },
+    {
+      "name": "bathroom-04",
+      "text": "Bathroom 4 (Basement)",
+      "frequency": "weekly",
+      "column": 2,
+      "weeks": [
+        {
+          "name": "1",
+          "text": "1",
+          "completed": false
+        },
+        {
+          "name": "2",
+          "text": "2",
+          "completed": false
+        },
+        {
+          "name": "3",
+          "text": "3",
+          "completed": false
+        },
+        {
+          "name": "4",
+          "text": "4",
+          "completed": false
+        }
+      ],
+      "sub-zones": [
+        {
+          "name": "wash-bath-mat",
+          "text": "Wash bath mat and curtain (monthly)",
+          "frequency": "monthly",
+          "progress": [
+            {
+              "name": "1",
+              "text": "1",
+              "completed": false
+            }
+          ]
+        },
+        {
+          "name": "replace-bath-towels",
+          "text": "Replace bath towels",
+          "frequency": "weekly",
+          "progress": [
+            {
+              "name": "1",
+              "text": "1",
+              "completed": false
+            },
+            {
+              "name": "2",
+              "text": "2",
+              "completed": false
+            },
+            {
+              "name": "3",
+              "text": "3",
+              "completed": false
+            },
+            {
+              "name": "4",
+              "text": "4",
+              "completed": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "yearly-tasks",
+      "text": "Yearly",
+      "frequency": "monthly",
+      "column": 2,
+      "weeks": [
+        {
+          "name": "1",
+          "text": "1",
+          "completed": false
+        },
+        {
+          "name": "2",
+          "text": "2",
+          "completed": false
+        },
+        {
+          "name": "3",
+          "text": "3",
+          "completed": false
+        },
+        {
+          "name": "4",
+          "text": "4",
+          "completed": false
+        }
+      ],
+      "sub-zones": [
+        {
+          "name": "vacuum-furniture",
+          "text": "Vacuum furniture (under and inside)",
+          "frequency": "monthly",
+          "progress": [
+            {
+              "name": "1",
+              "text": "1",
+              "completed": false
+            }
+          ]
+        },
+        {
+          "name": "wash-doormats-curtains",
+          "text": "Wash doormats/curtains",
+          "frequency": "monthly",
+          "progress": [
+            {
+              "name": "1",
+              "text": "1",
+              "completed": false
+            }
+          ]
+        },
+        {
+          "name": "window-track-floor-vents",
+          "text": "Vacuum window track/floor vents",
+          "frequency": "monthly",
+          "progress": [
+            {
+              "name": "1",
+              "text": "1",
+              "completed": false
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

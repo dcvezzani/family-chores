@@ -3,8 +3,11 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Secret from '../components/Secret.vue'
 import Profile from '../components/Profile.vue'
-import { authorize, routes as authRoutes } from '../plugins/auth'
+import ChoreZones from '../components/ChoreZones.vue'
+import ChoreWorkSheet from '../components/ChoreWorkSheet.vue'
+import { authorize, routes as authRoutes, getUser } from '../plugins/auth'
 import { handlePromiseError } from '../plugins/errors'
+import handlers from './handlers'
 
 Vue.use(VueRouter)
 
@@ -14,6 +17,18 @@ const routes = [
     name: 'Home',
     component: Home
   },
+  handlers.ChoreWorkSheet({
+    path: '/chore-work-sheet/:zone',
+    name: 'ChoreWorkSheet',
+    component: ChoreWorkSheet,
+    meta: { authorizationRequired: true },
+  }),
+  handlers.ChoreZones({
+    path: '/chore-zones',
+    name: 'ChoreZones',
+    component: ChoreZones,
+    meta: { authorizationRequired: true },
+  }),
   {
     path: '/secret',
     name: 'Secret',

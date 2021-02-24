@@ -1,8 +1,9 @@
 <template>
-  <div id="app">
-    <div id="nav">
+  <div id="app" class="container">
+    <div id="nav" class="noprint">
       <router-link to="/">Home</router-link>
       <span v-if="false"> | <router-link to="/token">Token</router-link> </span>
+      <span> | <router-link to="/chore-zones">Chore Zones</router-link> </span>
       <span> | <router-link to="/secret">Secret</router-link> </span>
       <span> | <router-link to="/profile">Profile</router-link> </span>
       <span> | <router-link to="/about">About</router-link> </span>
@@ -41,4 +42,10 @@ export default {
 #nav a.router-link-exact-active {
   color: #42b983;
 }
+@media print{
+   .noprint{
+       display:none;
+   }
+}
+
 </style>
