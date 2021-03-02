@@ -7,7 +7,7 @@ const deauthorizeUser = async () => {
   localStorage.removeItem('user');
   console.log(">>>user", user, user.id)
   
-  const url = `${process.env.VUE_APP_API_BASE}/deauthorize/${user.id}`
+  const url = `${process.env.VUE_APP_API_BASE}/auth/deauthorize/${user.id}`
   console.log(">>>url", url)
   const results = await fetch(url)
     .then(response => response.json())

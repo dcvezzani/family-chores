@@ -58,6 +58,8 @@ router.get('/purgeUserData', function(req, res, next) {
 
 
 const substituteAccessCode = (data) => {
+  if (!isNonProd) return Promise.resolve(data)
+
   // console.log(">>>data", data)
 
   // {
