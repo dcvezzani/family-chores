@@ -13,7 +13,7 @@ const AUTHORIZE_URI = (isNonProd)
   
 router.get('/authorize', function (req, res) {
   const uri = AUTHORIZE_URI
-  // console.log(">>>uri", uri)
+  console.log(">>>/authorize, uri", uri)
   res.redirect(uri)
 })
   
@@ -22,7 +22,7 @@ router.get('/token', async function(req, res, next) {
   if (!code) return res.status(400).json({ message: `Missing authorization grant code` })
 
   const data = await getToken(code)
-  .then(data => substituteAccessCode(data))
+  // .then(data => substituteAccessCode(data))
   .then(data => getUser(data))
   .then(data => registerUser(data))
   .catch(err => console.error(`Unable to get token`, err))
@@ -71,7 +71,7 @@ const substituteAccessCode = (data) => {
   //   expires_at_string: 'Tue, 02 Mar 2021 02:10:47 GMT'
   // }  
 
-  data.access_token = 'EAABiMOZBbkfMBAM9h0K5kOZBUpUYEBeOSEU3jacUSiyHZBqZBGD0fS9vchej4wA8XAZCujb9CtiRgRZCvwDA9vpzJVMD8dkvZAeW47VqczxPzdsiC5hDwpJ1TfyxZBpxbjyVZA6UkxZBXIcV5ThfGNVTRYl2VQEP4s4wmFXncyXSTZBjvo2i9dRMilw5UwZBNhbZAocnhIiPKTwzglzvCug6nF0xognxbY4oZAwmasIPv7nGCVkQZDZD'
+  data.access_token = 'EAABiMOZBbkfMBAMh4ZAGpvSUMlsuOCZCfZCMomAdryLZA8CpzJdfnNlkOg6or4EUFCv8FvvCLtMDbGOXVhPVvdPmcgfHUVlBIBLF1M81Ps0lQZCHc85sjr9XOie101Sg1a5rUctW7jLtyS6CbgrOj20CAeA6wi5XOIKkqQRetr9wZDZD'
 
   return Promise.resolve(data)
 }
@@ -160,17 +160,17 @@ const registerUser = (user) => {
 }
 
 const getToken = (code) => {
-  if (isNonProd) {
-    const expires_at = Math.round((new Date()).getTime()) + localConfig.token.expires_in
-    const token = {
-      ...localConfig.token,
-      expires_at,
-      "expires_at_string": new Date(expires_at).toUTCString(),
-    }
+  // if (isNonProd) {
+  //   const expires_at = Math.round((new Date()).getTime()) + localConfig.token.expires_in
+  //   const token = {
+  //     ...localConfig.token,
+  //     expires_at,
+  //     "expires_at_string": new Date(expires_at).toUTCString(),
+  //   }
 
-    // console.log(">>>getToken", token)
-    return Promise.resolve(token)
-  }
+  //   // console.log(">>>getToken", token)
+  //   return Promise.resolve(token)
+  // }
   
   const { client_id, redirect_uri, client_secret } = config
   const options = {

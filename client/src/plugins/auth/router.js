@@ -11,6 +11,7 @@ export default [
       console.log(">>>search", search)
       
       let url = `${process.env.VUE_APP_API_TOKEN}${search}`
+      console.log(">>>/token, url", url)
       const state = await fetch(url)
       .then(response => response.json())
       .then(user => {

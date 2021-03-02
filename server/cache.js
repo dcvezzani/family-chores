@@ -1,6 +1,6 @@
 const fs = require('fs')
 
-const CACHE_PATH = `./cache/cache.json`
+const CACHE_PATH = `../cache/cache.json`
 
 const _users = JSON.parse(fs.readFileSync(CACHE_PATH))
 
