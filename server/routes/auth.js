@@ -105,7 +105,10 @@ const getUser = (payload) => {
     request(options, (error, response, body) => {
       // console.log(">>>body", body)
       if (!error && response.statusCode == 200) {
-        return resolve(body)
+        return resolve({
+          ...body,
+          token: payload,
+        })
       } else if (response.statusCode >= 400) {
         return reject({message: `Unable to get user profile`, status: response.statusCode, error, body})
       }
