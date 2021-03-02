@@ -4,9 +4,9 @@ var { users } = require('../cache');
 var { localConfig, config } = require('../config');
 var router = express.Router();
 
-const isNonProd = () => (['development', 'local', 'dev'].includes(process.env.NODE_ENV))
+const isNonProd = ['development', 'local', 'dev'].includes(process.env.NODE_ENV)
 
-const AUTHORIZE_URI = (isNonProd())
+const AUTHORIZE_URI = (isNonProd)
   ? `${localConfig.oauth_base_url}?client_id=${config.client_id}&redirect_uri=${config.redirect_uri}&state=xxt&scope=${config.scope}`
   : `${config.oauth_base_url}?client_id=${config.client_id}&redirect_uri=${config.redirect_uri}&state=xxt&scope=${config.scope}`
 
@@ -58,9 +58,10 @@ router.get('/purgeUserData', function(req, res, next) {
 
 
 const substituteAccessCode = (data) => {
+  console.log(">>>data", data)
   if (!isNonProd) return Promise.resolve(data)
 
-  // console.log(">>>data", data)
+  console.log(">>>substituteAccessCode for non prod", {isNonProd})
 
   // {
   //   access_token: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxykCSQNIsk9X3ogqxobxTwsDyZBpM6sOItKbMr0Ggba6yBVk3l1DKZBcbZBgWofloYzuhwYjsZBDzGlHQs5hwqSguDEnaHOHA5rzzt7ZBh8NIa6QuCkX9ZAbH9AHlsL7fy5qlYskyaHTC6wkfOAZDZD',
@@ -97,7 +98,7 @@ const getUser = (token) => {
     },
     json: true,
   }
-  // console.log(">>>options", options)
+  console.log(">>>options", options)
 
   return new Promise((resolve, reject) => {
     request(options, (error, response, body) => {
@@ -179,7 +180,7 @@ const getToken = (code) => {
     },
     json: true,
   }
-  // console.log(">>>options", options)
+  console.log(">>>options", options)
 
   return new Promise((resolve, reject) => {
     request(options, (error, response, body) => {
