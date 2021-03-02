@@ -76,13 +76,14 @@ const substituteAccessCode = (data) => {
   return Promise.resolve(data)
 }
 
-const getUser = (token) => {
+const getUser = (payload) => {
 // GET https://graph.facebook.com/v9.0/me?fields=id%2Cname%2Cemail&access_token=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxsk9X3ogqxobxTwsDyZBpM6sOItKbMr0Ggba6yBVk3l1DKZBcbZBgWofloYzuhwYjsZBDzGlHQs5hwqSguDEnaHOHA5rzzt7ZBh8NIa6QuCkX9ZAbH9AHlsL7fy5qlYskyaHTC6wkfOAZDZD
  
+  const { access_token } = payload
   if (isNonProd) {
     const user = {
       ...localConfig.user,
-      token,
+      token: payload,
     }
     console.log(">>>getUser", user)
 
@@ -94,7 +95,7 @@ const getUser = (token) => {
     url: `${config.graph_base_url}/me`,
     qs: {
       fields: 'id,name,email',
-      access_token: token,
+      access_token,
     },
     json: true,
   }
@@ -106,7 +107,7 @@ const getUser = (token) => {
       if (!error && response.statusCode == 200) {
         return resolve(body)
       } else if (response.statusCode >= 400) {
-        return reject({message: `Unable to get token`, status: response.statusCode, error, body})
+        return reject({message: `Unable to get user profile`, status: response.statusCode, error, body})
       }
     })
   })
