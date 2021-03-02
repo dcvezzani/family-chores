@@ -190,7 +190,13 @@ const getToken = (code) => {
     request(options, (error, response, body) => {
       // console.log(">>>body", body)
       if (!error && response.statusCode == 200) {
-        return resolve(body)
+        const expires_at = Math.round((new Date()).getTime()) + body.expires_in
+
+        return resolve({
+          ...body,
+          expires_at,
+          "expires_at_string": new Date(expires_at).toUTCString(),
+        })
       } else if (response.statusCode >= 400) {
         return reject({message: `Unable to get token`, status: response.statusCode, error, body})
       }
