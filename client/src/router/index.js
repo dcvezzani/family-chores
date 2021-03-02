@@ -5,6 +5,7 @@ import Secret from '../components/Secret.vue'
 import Profile from '../components/Profile.vue'
 import { authorize, routes as authRoutes } from '../plugins/auth'
 import { handlePromiseError } from '../plugins/errors'
+import handlers from './handlers'
 
 Vue.use(VueRouter)
 
@@ -20,12 +21,12 @@ const routes = [
     component: Secret,
     meta: { authorizationRequired: true }
   },
-  {
+  handlers.Profile({
     path: '/profile',
     name: 'Profile',
     component: Profile,
     meta: { authorizationRequired: true }
-  },
+  }),
   {
     path: '/about',
     name: 'About',

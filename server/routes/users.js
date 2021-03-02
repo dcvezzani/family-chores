@@ -1,9 +1,15 @@
 var express = require('express');
 var router = express.Router();
+var { users } = require('../cache');
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
+router.get('/isAuthorized/:userId', function (req, res) {
+    const { userId } = req.params
+    const user = users.get(userId)
+    return res.json({isAuthorized: true})
+})
+  
+router.get('/', function (req, res) {
+    return res.json(users.all)
+})
 
 module.exports = router;

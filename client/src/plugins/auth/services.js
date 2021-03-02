@@ -1,10 +1,27 @@
 const { Cookies, getExpiresInSeconds } = require('./cookies')
+const { handlePromiseError } = require('../errors')
+
+const deauthorizeUser = async () => {
+  let user = localStorage.getItem('user');
+  if (user) user = JSON.parse(user)
+  localStorage.removeItem('user');
+  console.log(">>>user", user, user.id)
+  
+  const url = `${process.env.VUE_APP_API_BASE}/deauthorize/${user.id}`
+  console.log(">>>url", url)
+  const results = await fetch(url)
+    .then(response => response.json())
+    .then(payload => payload)
+    .catch(handlePromiseError(`Unable to deauthorize user`))
+  console.log(">>>results", results)
+}
 
 exports.logout = () => { 
-  localStorage.removeItem('user');
+  deauthorizeUser()
 
   const cookies = new Cookies()
   cookies.clear('chores_app_loggedin')
+  
   Event.$emit('onLoginLogoutEvent')
 }
 

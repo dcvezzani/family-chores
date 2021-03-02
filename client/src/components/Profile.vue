@@ -2,6 +2,7 @@
   <div class="profile">
     <h1>{{ msg }}</h1>
     <div v-if="user">{{user.name}}</div>
+    <div v-if="profile">{{profile}}</div>
   </div>
 </template>
 
@@ -10,6 +11,7 @@ import { getUser } from '../plugins/auth'
 
 export default {
   name: 'Profile',
+  props: ['profile'],
   data() {
     return {
       msg: 'here is your profile',

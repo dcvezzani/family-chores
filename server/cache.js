@@ -11,5 +11,9 @@ exports.users = {
     _users[id] = user
     fs.writeFileSync(CACHE_PATH, JSON.stringify(_users))
   },
+  clear: (id) => { 
+    delete _users[id]
+    fs.writeFileSync(CACHE_PATH, JSON.stringify(_users))
+  },
 }
 

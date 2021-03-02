@@ -4,7 +4,7 @@
       <router-link to="/">Home</router-link>
       <span v-if="false"> | <router-link to="/token">Token</router-link> </span>
       <span> | <router-link to="/secret">Secret</router-link> </span>
-      <span> | <router-link to="/profile">Profile</router-link> </span>
+      <span v-if="isLoggedIn"> | <router-link to="/profile">Profile</router-link> </span>
       <span> | <router-link to="/about">About</router-link> </span>
       <Auth></Auth>
     </div>
@@ -16,6 +16,23 @@
 export default {
   name: 'App',
   props: ['msg'],
+  data() {
+    return {
+      isLoggedIn: false,
+    }
+  },
+  methods: {
+    onLoginLogoutEvent(event) {
+      this.isLoggedIn = document.cookie.includes('chores_app_loggedin')
+    },
+  },
+  mounted() {
+    Event.$on('onLoginLogoutEvent', this.onLoginLogoutEvent)
+    this.onLoginLogoutEvent()
+  },
+  beforeDestroy() {
+    Event.$off('onLoginLogoutEvent', this.onLoginLogoutEvent)
+  },
 }
 </script>
 
