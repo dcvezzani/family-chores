@@ -40,6 +40,7 @@ exports.login = (user) => {
   Event.$emit('onLoginLogoutEvent')
 }
 
+// not called in dev
 exports.authorize = async (options={}) => { 
   const { force, to } = options
 
